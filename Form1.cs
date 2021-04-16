@@ -153,7 +153,7 @@ namespace WindowsFormsGraphics4
                 int YSize = Convert.ToInt32(textBox5.Text);
                 int dist = Convert.ToInt32(textBox6.Text);
                 int XAngle = Convert.ToInt32(textBox7.Text);
-                int YAngle = Convert.ToInt32(textBox8.Text);
+                int YAngle = Convert.ToInt32(textBox8.Text)+90;
                 int notRotatedX = x;
                 int notRotatedY = y;
 
@@ -191,7 +191,7 @@ namespace WindowsFormsGraphics4
                 if (XAngle != 0)
                 {
                    
-                    double cDegrees = 90+(Math.PI * XAngle) / 180.0f;
+                    double cDegrees = (Math.PI * XAngle) / 180.0f;
                     dx = (int)(dx * Math.Cos(cDegrees) - dy * Math.Sin(cDegrees));
                     rx = (int)(rx * Math.Cos(cDegrees) - ry * Math.Sin(cDegrees));
                     bx = (int)(bx * Math.Cos(cDegrees) - by * Math.Sin(cDegrees));
