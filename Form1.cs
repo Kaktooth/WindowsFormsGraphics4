@@ -161,13 +161,11 @@ namespace WindowsFormsGraphics4
                 {
                     double cDegrees = (Math.PI * XAngle) / 180.0f;
                     x = (int)(x * Math.Cos(cDegrees) - y * Math.Sin(cDegrees));
-                    //z = (int)((y * -Math.Sin(cDegrees)) + (z * Math.Cos(cDegrees)));
                 }
 
 
                 if (YAngle != 0)
                 {
-                    //(point3D.X * cosDegrees) + (point3D.Z * sinDegrees);
                     double cDegrees = (Math.PI * YAngle) / 180.0f;
                     y = (int)(y * Math.Sin(cDegrees) + x * Math.Cos(cDegrees));
                 }
