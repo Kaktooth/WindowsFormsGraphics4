@@ -51,6 +51,7 @@ namespace WindowsFormsGraphics4
             this.label9 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -58,11 +59,10 @@ namespace WindowsFormsGraphics4
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1395, 346);
+            this.label1.Location = new System.Drawing.Point(1250, 550);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
+            this.label1.Size = new System.Drawing.Size(0, 17);
             this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
             // 
             // button1
             // 
@@ -190,7 +190,7 @@ namespace WindowsFormsGraphics4
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(1253, 509);
+            this.button2.Location = new System.Drawing.Point(1255, 475);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(96, 58);
             this.button2.TabIndex = 16;
@@ -232,7 +232,7 @@ namespace WindowsFormsGraphics4
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(1253, 414);
+            this.button3.Location = new System.Drawing.Point(1253, 399);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(96, 58);
             this.button3.TabIndex = 21;
@@ -240,11 +240,22 @@ namespace WindowsFormsGraphics4
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(1362, 325);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(96, 58);
+            this.button4.TabIndex = 22;
+            this.button4.Text = "Поворот Куба";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1470, 579);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.textBox7);
@@ -300,6 +311,7 @@ namespace WindowsFormsGraphics4
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }
 

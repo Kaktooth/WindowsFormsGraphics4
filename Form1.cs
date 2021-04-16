@@ -50,7 +50,7 @@ namespace WindowsFormsGraphics4
                 float rotatedY = 0;
                 if (XAngle != 0)
                 {
-                    rotatedX = sx * (float)Math.Cos(XAngle) - sy * (float)Math.Sin(XAngle);
+                    rotatedX = x * (float)Math.Cos(XAngle) - y * (float)Math.Sin(XAngle);
                 }
                 else
                 {
@@ -59,7 +59,7 @@ namespace WindowsFormsGraphics4
 
                 if (YAngle != 0)
                 {
-                    rotatedY = sx * (float)Math.Sin(YAngle) + sy * (float)Math.Cos(YAngle);
+                    rotatedY = y * (float)Math.Sin(YAngle) + x * (float)Math.Cos(YAngle);
                 }
                 else
                 {
@@ -71,7 +71,7 @@ namespace WindowsFormsGraphics4
                 pictureBox1.Refresh();
             }
             stopwatch.Stop();
-            label1.Text = stopwatch.Elapsed.ToString();
+            label1.Text = "Runtime: " + stopwatch.Elapsed.ToString();
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -98,7 +98,7 @@ namespace WindowsFormsGraphics4
                 int XSize = Convert.ToInt32(textBox4.Text);
                 int YSize = Convert.ToInt32(textBox5.Text);
                 int dist = Convert.ToInt32(textBox6.Text);
-
+               
                 float sx = (XSize / 2) + ((x * dist) / (z - dist));
                 float sy = (YSize / 2) - ((y * dist) / (z - dist));
                 int zMove = z + R;
@@ -133,7 +133,95 @@ namespace WindowsFormsGraphics4
                 pictureBox1.Refresh();
             }
             stopwatch.Stop();
-            label1.Text = stopwatch.Elapsed.ToString();
+            label1.Text = "Runtime: "+stopwatch.Elapsed.ToString();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            using (var g = Graphics.FromImage(pictureBox1.Image))
+            {
+                Brush b = Brushes.Black;
+                Pen p = Pens.Black;
+                int R = 80;
+                int height = 40;
+                int x = Convert.ToInt32(textBox1.Text);
+                int y = Convert.ToInt32(textBox3.Text);
+                int z = Convert.ToInt32(textBox2.Text);
+                int XSize = Convert.ToInt32(textBox4.Text);
+                int YSize = Convert.ToInt32(textBox5.Text);
+                int dist = Convert.ToInt32(textBox6.Text);
+                int XAngle = Convert.ToInt32(textBox7.Text);
+                int YAngle = Convert.ToInt32(textBox8.Text);
+                int notRotatedX = x;
+                int notRotatedY = y;
+
+                if (XAngle != 0)
+                {
+                    double cDegrees = (Math.PI * XAngle) / 180.0f;
+                    x = (int)(x * Math.Cos(cDegrees) - y * Math.Sin(cDegrees));
+                    //z = (int)((y * -Math.Sin(cDegrees)) + (z * Math.Cos(cDegrees)));
+                }
+
+
+                if (YAngle != 0)
+                {
+                    //(point3D.X * cosDegrees) + (point3D.Z * sinDegrees);
+                    double cDegrees = (Math.PI * YAngle) / 180.0f;
+                    y = (int)(y * Math.Sin(cDegrees) + x * Math.Cos(cDegrees));
+                }
+
+                float dx = (XSize / 2) + ((x * dist) / (z - dist));
+                float dy = (YSize / 2) - ((y * dist) / (z - dist));
+
+              
+                float rx = (XSize / 2) + ((x * dist) / (z - dist))+notRotatedX;
+                float ry = (YSize / 2) - ((y * dist) / (z - dist));
+
+                float bx = (XSize / 2) + ((x * dist) / (z - dist));
+                float by = (YSize / 2) - ((y * dist) / (z - dist))+notRotatedY;
+
+                float nx = (XSize / 2) + ((x * dist) / (z - dist))+notRotatedX;
+                float ny = (YSize / 2) - ((y * dist) / (z - dist))+notRotatedY;
+
+
+
+                g.RotateTransform(XAngle, MatrixOrder.Prepend);
+                if (XAngle != 0)
+                {
+                   
+                    double cDegrees = 90+(Math.PI * XAngle) / 180.0f;
+                    dx = (int)(dx * Math.Cos(cDegrees) - dy * Math.Sin(cDegrees));
+                    rx = (int)(rx * Math.Cos(cDegrees) - ry * Math.Sin(cDegrees));
+                    bx = (int)(bx * Math.Cos(cDegrees) - by * Math.Sin(cDegrees));
+                    nx = (int)(nx * Math.Cos(cDegrees) - ny * Math.Sin(cDegrees));
+                }
+
+                if (YAngle != 0)
+                {
+                    double cDegrees = ((Math.PI * YAngle) / 180.0f);
+                    dy = (int)(dy * Math.Sin(cDegrees) + dx * Math.Cos(cDegrees));
+                    ry = (int)(ry * Math.Sin(cDegrees) + rx * Math.Cos(cDegrees));
+                    by = (int)(by * Math.Sin(cDegrees) + bx * Math.Cos(cDegrees));
+                    ny = (int)(ny * Math.Sin(cDegrees) + nx * Math.Cos(cDegrees));
+                }
+
+                g.DrawPolygon(Pens.Red,new PointF[4]{ new PointF(dx,dy),new PointF(rx, ry),new PointF(nx, ny), new PointF(bx, by) });
+                g.DrawPolygon(Pens.LightBlue, new PointF[4] { new PointF(dx+20, dy+20), new PointF(rx+20, ry+20), new PointF(nx+20, ny+20), new PointF(bx+20, by+20) });
+                g.DrawPolygon(Pens.LightGreen, new PointF[4] { new PointF(dx + 20, dy + 20), new PointF(rx + 20, ry + 20), new PointF(rx, ry), new PointF(dx,dy) });
+                g.DrawPolygon(Pens.Gray, new PointF[4] { new PointF(bx, by), new PointF(bx + 20, by + 20) , new PointF(nx + 20, ny + 20), new PointF(nx, ny)});
+                g.DrawPolygon(Pens.Azure, new PointF[4] { new PointF(bx, by), new PointF(bx + 20, by + 20), new PointF(dx + 20, dy + 20), new PointF(dx, dy) });
+                g.DrawPolygon(Pens.Beige, new PointF[4] { new PointF(rx,ry), new PointF(rx + 20, ry + 20), new PointF(nx + 20, ny + 20), new PointF(nx, ny) });
+                
+               
+         
+               
+             
+                pictureBox1.Refresh();
+            }
+            stopwatch.Stop();
+            label1.Text = "Runtime: " + stopwatch.Elapsed.ToString();
         }
     }
 }
