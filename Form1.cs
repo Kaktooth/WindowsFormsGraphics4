@@ -62,18 +62,18 @@ namespace WindowsFormsGraphics4
 
             public static Point3D RotateX(Point3D point3D, double degrees)
             {
-                double cDegrees = (Math.PI * degrees) / 180.0f;
-                double x = (point3D.X * Math.Cos(cDegrees)) + (point3D.Z * Math.Sin(cDegrees));
-                double z = (point3D.X * -Math.Sin(cDegrees)) + (point3D.Z * Math.Cos(cDegrees));
+                double rad = (Math.PI * degrees) / 180.0f;
+                double x = (point3D.X * Math.Cos(rad)) + (point3D.Z * Math.Sin(rad));
+                double z = (point3D.X * -Math.Sin(rad)) + (point3D.Z * Math.Cos(rad));
 
                 return new Point3D(x, point3D.Y, z);
             }
 
             public static Point3D RotateY(Point3D point3D, double degrees)
             {
-                double cDegrees = (Math.PI * degrees) / 180.0;
-                double y = (point3D.Y * Math.Cos(cDegrees)) + (point3D.Z * Math.Sin(cDegrees));
-                double z = (point3D.Y * -Math.Sin(cDegrees)) + (point3D.Z * Math.Cos(cDegrees));
+                double rad = (Math.PI * degrees) / 180.0;
+                double y = (point3D.Y * Math.Cos(rad)) + (point3D.Z * Math.Sin(rad));
+                double z = (point3D.Y * -Math.Sin(rad)) + (point3D.Z * Math.Cos(rad));
 
                 return new Point3D(point3D.X, y, z);
             }
