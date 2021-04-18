@@ -150,7 +150,7 @@ namespace WindowsFormsGraphics4
                 int YAngle = Convert.ToInt32(trackBar2.Value);
                 int Size = Convert.ToInt32(textBox7.Text);
                 PointF[] point3D = new PointF[4];
-                View3D.Point3D point0 = new View3D.Point3D(0, 0, 0);
+                View3D.Point3D point0 = checkBox1.Checked ? new View3D.Point3D(0, 0, 0) : new View3D.Point3D(x, y, z);
                 View3D.Point3D[] xyzPoints = XYZPoints((int)Size, (int)Size, (int)Size);
 
                 View3D.Point3D cubeOrigin = new View3D.Point3D((int)(Size / 2), (int)(Size / 2), (int)(Size / 2));
@@ -300,7 +300,8 @@ namespace WindowsFormsGraphics4
                 int notRotatedX = x;
                 int notRotatedY = y;
                 PointF[] point3D = new PointF[24];
-                View3D.Point3D point0 = new View3D.Point3D(0, 0, 0);
+                
+                View3D.Point3D point0 =checkBox1.Checked ? new View3D.Point3D(0, 0, 0) : new View3D.Point3D(x, y, z);
                 View3D.Point3D[] cubePoints = CubePoints(Size,Size,Size);
                 View3D.Point3D cubeOrigin = new View3D.Point3D((int)(Size / 2),(int)(Size / 2), (int)(Size / 2));
                 cubePoints = View3D.Translate(cubePoints, cubeOrigin, point0);

@@ -54,6 +54,7 @@ namespace WindowsFormsGraphics4
             this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.label10 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -284,11 +285,25 @@ namespace WindowsFormsGraphics4
             this.textBox7.Size = new System.Drawing.Size(100, 22);
             this.textBox7.TabIndex = 25;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBox1.Location = new System.Drawing.Point(1362, 468);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(110, 21);
+            this.checkBox1.TabIndex = 27;
+            this.checkBox1.Text = "RotateCenter";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1470, 579);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.textBox7);
             this.Controls.Add(this.trackBar2);
@@ -352,6 +367,7 @@ namespace WindowsFormsGraphics4
         private System.Windows.Forms.TrackBar trackBar2;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 
